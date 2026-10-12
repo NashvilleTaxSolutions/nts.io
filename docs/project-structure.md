@@ -8,6 +8,7 @@ nts.io/
 │   ├── css/                 # site styles, theme files, compiled CSS
 │   ├── fonts/               # web fonts and icon font files
 │   ├── images/              # content images, backgrounds, illustrations
+│   │   └── team/            # optimized team portraits and their source images
 │   ├── js/                  # project scripts and page logic
 │   └── vendor/              # third-party or framework assets
 ├── docs/
@@ -20,4 +21,5 @@ nts.io/
 Notes:
 - Existing bundled files in the project root were left in place to avoid breaking any references.
 - Assets can be gradually migrated into the structured folders as needed.
+- Team portrait source files are kept in `assets/images/team/source/`; the page uses optimized WebP images in `assets/images/team/`.
 - Keep generated/minified build files together and avoid mixing raw source with compiled output.
