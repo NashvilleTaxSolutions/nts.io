@@ -97,10 +97,13 @@
 }
 
 .team-member summary::after {
-  color: #e40513;
-  content: "+";
-  font-size: 1.5rem;
-  line-height: 1;
+  width: 0;
+  height: 0;
+  border-top: 0.45rem solid #e40513;
+  border-right: 0.35rem solid transparent;
+  border-left: 0.35rem solid transparent;
+  content: "";
+  transition: transform 200ms ease;
 }
 
 .team-member[open] summary {
@@ -108,7 +111,7 @@
 }
 
 .team-member[open] summary::after {
-  content: "-";
+  transform: rotate(180deg);
 }
 
 .team-member__profile {
