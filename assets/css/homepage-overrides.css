@@ -112,12 +112,15 @@
 }
 
 .team-member__profile {
+  height: 24rem;
   padding: 1rem;
+  overflow: hidden;
 }
 
 .team-member__profile img {
+  display: block;
   width: 100%;
-  max-height: 24rem;
+  height: 100%;
   border-radius: 0.25rem;
   object-fit: cover;
   object-position: center top;
