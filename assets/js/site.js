@@ -52,14 +52,48 @@ const initializePageReveals = () => {
     section.classList.add("scroll-reveal");
     observer.observe(section);
   });
+
+  window.setTimeout(() => {
+    sections.forEach((section) => {
+      if (!section.classList.contains("is-revealed")) {
+        revealSection(section);
+        observer.unobserve(section);
+      }
+    });
+  }, 3000);
 };
 
-const startPageReveals = () => requestAnimationFrame(initializePageReveals);
+const initializePartnersMarquee = () => {
+  const container = document.querySelector(".nts-partners-marquee > .e-con-inner");
+  if (!container || container.children.length === 0) {
+    return;
+  }
+
+  const track = document.createElement("div");
+  const group = document.createElement("div");
+  track.className = "nts-partners-track";
+  group.className = "nts-partners-group";
+
+  Array.from(container.children).forEach((partner) => group.append(partner));
+
+  const duplicate = group.cloneNode(true);
+  duplicate.setAttribute("aria-hidden", "true");
+  duplicate.setAttribute("inert", "");
+  duplicate.querySelectorAll("a").forEach((link) => link.setAttribute("tabindex", "-1"));
+
+  track.append(group, duplicate);
+  container.replaceChildren(track);
+};
+
+const startPage = () => {
+  initializePartnersMarquee();
+  requestAnimationFrame(initializePageReveals);
+};
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", startPageReveals, {
+  document.addEventListener("DOMContentLoaded", startPage, {
     once: true,
   });
 } else {
-  startPageReveals();
+  startPage();
 }
